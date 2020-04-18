@@ -22,6 +22,34 @@ Use the `mode:normal` subcommand to turn off your lights.
 
 Use the `config:validate` subcommand to print merged configuration
 
+## Streamdeck UI
+
+Want to add it to streamdeck?
+
+```json
+{
+  "streamdeck_ui_version": 1,
+  "state": {
+    "your_device_id": {
+      "buttons": {
+        "0": {
+          "keys": "",
+          "write": "",
+          "text": "On Video",
+          "command": "/home/ngerakines/bin/deva mode:meeting --config /home/ngerakines/.config/deva/"
+        },
+        "1": {
+          "keys": "",
+          "write": "",
+          "text": "Off Video",
+          "command": "/home/ngerakines/bin/deva mode:normal --config /home/ngerakines/.config/deva/"
+        }
+      }
+    }
+  }
+}
+```
+
 # Configuration
 
 This tool loads configuration from JSON files. The lookup order is:
