@@ -1,0 +1,55 @@
+project_name: deva
+
+before:
+
+  hooks:
+    - go mod download
+
+builds:
+  - binary: deva
+    env:
+      - CGO_ENABLED=0
+    ldflags:
+      - -w
+      - -s
+      - -extldflags '-static'
+archives:
+  - format: zip
+    files:
+      - LICENSE
+      - README*
+      - CHANGELOG*
+
+checksum:
+  name_template: 'checksums.txt'
+
+signs:
+  - signature: "${artifact}_sig"
+    artifacts: all
+
+snapshot:
+  name_template: "{{ .Tag }}-next"
+
+nfpms:
+  -
+    vendor: Nick Gerakines
+    homepage: https://github.com/ngerakines/deva
+    maintainer: Nick Gerakines <nick.gerakines@gmail.com>
+    description: Control Elgato Key Light devices from the command line.
+    license: mit
+    formats:
+      - deb
+      - rpm
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^assets:'
+
+release:
+  github:
+    owner: ngerakines
+    name: deva
