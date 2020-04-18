@@ -37,3 +37,6 @@ This tool loads configuration from JSON files. The lookup order is:
 
 # License
 
+MIT License
+
+Copyright (c) 2020 Nick Gerakines
